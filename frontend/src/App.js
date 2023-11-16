@@ -22,7 +22,9 @@ import ProfileCard from './Pages/ProfileCard';
 import AssignmentUpload from './Pages/AssignmentUpload';
 import QPupload from './Pages/QPupload';
 import AssignmentPage from './Pages/AssignmentPage';
-import QP from './Pages/QP';
+import QP from './Pages/QP1';
+import AssignmentPage1 from './Pages/AssignmentPage1';
+import QP1 from './Pages/QP1';
 
 
 
@@ -52,8 +54,8 @@ function App() {
           <Route path="/about" element={<AboutPage />}/>
           <Route path="/branches" element={<Branches />}/>
           <Route path="/notes" element={<PdfPage />}/>
-          <Route path="/assignments" element={<AssignmentPage/>}/>
-          <Route path="/question_papers" element={<QP/>}/>
+          <Route path="/assignments" element={<AssignmentPage1/>}/>
+          <Route path="/question_papers" element={<QP1/>}/>
 
 
           <Route path="*" element={<NoPage />} />

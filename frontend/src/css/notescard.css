@@ -19,7 +19,7 @@
 .visit {
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: none;
 }
 
 a {
@@ -52,9 +52,9 @@ a:hover {
   font-weight: bold;
   font-size: 1rem;
   margin: 1rem;
-  border: 2px solid #d50000;
+  border: 4px solid #b5e4f9;
   background: transparent;
-  color: #d50000;
+  color: #000000;
   border-radius: 1em;
   transition: background 200ms ease-in, color 200ms ease-in;
 }
@@ -63,9 +63,9 @@ a:hover {
   font-weight: bold;
   font-size: 1rem;
   margin: 1rem;
-  border: 2px solid #d50000;
+  border: 4px solid #b5e4f9;
   background: transparent;
-  color: #d50000;
+  color: #000000;
   border-radius: 1em;
   transition: background 200ms ease-in, color 200ms ease-in;
 }
@@ -73,12 +73,12 @@ a:hover {
   transform: scale(1.02);
 }
 .card__btn1:hover {
-  background: #d50000;
-  color: white;
+  background: #91dcdd;
+  color: rgb(0, 0, 0);
 }
 .card__btn2:hover {
-  background: #d50000;
-  color: white;
+  background: #91dcdd;
+  color: rgb(0, 0, 0);
 }
 
 .btn_txt {

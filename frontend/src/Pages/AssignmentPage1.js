@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import "../css/notescard.css";
 import axios from "axios";
 
-const NotesCard1 = () => {
-  const [note, setNote] = useState([]);
+const AssignmentPage1 = () => {
+  let [note, setNote] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/pdf/note/")
+      .get("http://127.0.0.1:8000/api/pdf/assignment/")
       .then((response) => setNote(response.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -20,7 +20,6 @@ const NotesCard1 = () => {
   };
 
   return (
-    // ! Added a page which is divided into 2
     <div className="page-wrapper">
       <div className="wrapper">
         {note.map(
@@ -35,21 +34,17 @@ const NotesCard1 = () => {
     </div>
   );
 };
-
 function Card({ note, openPdf }) {
   // ! Trigger the download by creating an invisible link and clicking it
   const handleDownloadClick = async (e) => {
-    // Prevent the default behavior of the anchor element
     e.preventDefault();
     try {
-      const response = await axios.get(note.note, { responseType: "blob" });
-      //! Created a Blob from the PDF data
+      const response = await axios.get(note.assignment, { responseType: "blob" });
       const pdfBlob = new Blob([response.data], { type: "application/pdf" });
-
-      //! Created a download link and trigger the download
+  
       const downloadLink = document.createElement("a");
       downloadLink.href = window.URL.createObjectURL(pdfBlob);
-      downloadLink.download = note.note.split("/").pop(); // Extracting the filename from the URL
+      downloadLink.download = note.assignment.split("/").pop();
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
@@ -62,12 +57,13 @@ function Card({ note, openPdf }) {
     <div className="card">
       <div className="card__body">
         <h2 className="card__title">{note.name}</h2>
-        <p className="card__description">Prof: {note.prof_name}</p>
+        <p className="card__description"key= {note.id}> Prof : {note.prof_name}</p>
         <p className="card__description">Ideal index: {note.ideal_index}</p>
         <p className="card__description">Subject Code: {note.sub_code}</p>
+        <p className="card__description">Submission Date: {note.l_submission}</p>
       </div>
 
-      <div className="card__btn1" onClick={() => openPdf(note.note)}>
+      <div className="card__btn1" onClick={() => openPdf(note.assignment)}>
         <span>
           <p className="btn_txt">View Note</p>
         </span>
@@ -81,5 +77,6 @@ function Card({ note, openPdf }) {
   );
 }
 
-ReactDOM.render(<NotesCard1 />, document.getElementById("root"));
-export default NotesCard1;
+
+ReactDOM.render(<AssignmentPage1 />,document.getElementById("root"));
+export default AssignmentPage1;
